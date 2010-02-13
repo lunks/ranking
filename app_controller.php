@@ -33,11 +33,21 @@
 class AppController extends Controller {
 
 var $components = array('PhpBB3');
+  var $username;
+  var $user_id;
+  var $group_id;
+  var $admin;
+
 function beforeFilter(){
-  $this->set('user_id', $this->PhpBB3->user->data['user_id']);
-  $this->set('username', $this->PhpBB3->user->data['username']);
-  $this->set('group_id', $this->PhpBB3->user->data['group_id']);
-  if($
+  $this->user_id = $this->PhpBB3->user->data['user_id'];
+  $this->set('user_id', $this->user_id);
+  $this->username = $this->PhpBB3->user->data['username'];
+  $this->set('username', $this->username);
+  $this->group_id = $this->PhpBB3->user->data['group_id'];
+  $this->set('group_id', $this->group_id);
+  if($group_id == 5)
+    $admin = true;
 }
+
 }
 ?>

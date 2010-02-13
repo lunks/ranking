@@ -3,7 +3,12 @@ class FightsController extends AppController {
 
 	var $name = 'Fights';
 	var $helpers = array('Html', 'Form');
-  var $components = array('PhpBB3');
+  var $components = array();
+  var $actsAs = array('SoftDeletable');
+
+  function beforeFilter(){
+    parent::beforeFilter();
+  }
 
 	function index() {
 		$this->Fight->recursive = 0;
@@ -22,13 +27,14 @@ class FightsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Fight->create();
 			if ($this->Fight->save($this->data)) {
-				$this->Session->setFlash(__('The fight has been saved', true));
+				$this->Session->setFlash('Duelo processado, aguardando confirmação do perdedor.');
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The fight could not be saved. Please, try again.', true));
 			}
 		}
-		$losers = $this->Fight->Member->find('list', array('conditions' => array('Member.user_type != 2')));
+		if ($this->user_id == 1) $this->redirect('http://www.brnavies.com.br/');
+		$losers = $this->Fight->Member->find('list', array('conditions' => array('Member.user_type !=' => 2, 'Member.user_id !=' => $this->user_id)));
 		$this->set(compact('losers'));
 	}
 
@@ -60,6 +66,26 @@ class FightsController extends AppController {
 		if ($this->Fight->delete($id)) {
 			$this->Session->setFlash(__('Fight deleted', true));
 			$this->redirect(array('action'=>'index'));
+		}
+		$this->Session->setFlash(__('Fight was not deleted', true));
+		$this->redirect(array('action' => 'index'));
+	}
+	function confirm($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for fight', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->Fight->id = $id;
+		if($this->Fight->field('loser_id') != $this->user_id){
+		  $this->Session->setFlash('Você não perdeu esse duelo, seu bobão! =D');
+		  $this->redirect(array('controller' => 'members', 'action' => 'dashboard');
+		}
+
+		if ($this->Fight->delete($id)) {
+		  $Ranking = $this->loadModel('Ranking');
+      $Ranking->processResult($id);
+			$this->Session->setFlash('Duelo confirmado.');
+			$this->redirect(array('controller' => 'members', 'action' => 'dashboard');
 		}
 		$this->Session->setFlash(__('Fight was not deleted', true));
 		$this->redirect(array('action' => 'index'));

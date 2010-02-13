@@ -3,9 +3,10 @@
 	<fieldset>
  		<legend><?php printf(__('Add %s', true), __('Fight', true)); ?></legend>
 	<?php
-	    echo "Duelo entre $username e:";
-		echo $this->Form->hidden('winner_id', array('default' => $user_id));
-		echo $this->Form->input('Member');
+	    echo $this->Form->hidden('winner_id', array('default' => $user_id));
+	    echo $username;
+	    echo " VS ";
+		echo $this->Form->input('loser_id', array('label' => 'challenger'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
