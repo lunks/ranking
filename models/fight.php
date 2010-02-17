@@ -2,6 +2,7 @@
 class Fight extends AppModel {
 	var $name = 'Fight';
 	var $displayField = 'winner_id';
+	var $actsAs = array('SoftDeletable');
 	var $belongsTo = array(
         'Member' => array(
             'className'    => 'Member',

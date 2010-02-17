@@ -7,6 +7,8 @@
 	    echo $username;
 	    echo " VS ";
 		echo $this->Form->input('loser_id', array('label' => 'Challenger'));
+		echo $this->Form->input('winner_points', array('label' => 'Pontos Vencedor'));
+		echo $this->Form->input('loser_points', array('label' => 'Pontos Perdedor'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

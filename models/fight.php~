@@ -2,11 +2,12 @@
 class Fight extends AppModel {
 	var $name = 'Fight';
 	var $displayField = 'winner_id';
+	var $actsAs = array('SoftDeletable' => array('field' => 'deleted'));
 	var $belongsTo = array(
         'Member' => array(
             'className'    => 'Member',
             'foreignKey'    => 'loser_id',
-            'fields' => array('user_id', 'user_name')
+            'fields' => array('user_id', 'username')
         )
     );
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

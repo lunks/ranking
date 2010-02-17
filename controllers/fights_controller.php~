@@ -4,7 +4,7 @@ class FightsController extends AppController {
 	var $name = 'Fights';
 	var $helpers = array('Html', 'Form');
   var $components = array();
-  var $actsAs = array('SoftDeletable');
+
 
   function beforeFilter(){
     parent::beforeFilter();
@@ -33,7 +33,7 @@ class FightsController extends AppController {
 				$this->Session->setFlash(__('The fight could not be saved. Please, try again.', true));
 			}
 		}
-		if ($this->user_id == 1) $this->redirect('http://www.brnavies.com.br/');
+		//if ($this->user_id == 1) $this->redirect('http://www.brnavies.com.br/');
 		$losers = $this->Fight->Member->find('list', array('conditions' => array('Member.user_type !=' => 2, 'Member.user_id !=' => $this->user_id)));
 		$this->set(compact('losers'));
 	}
@@ -77,16 +77,19 @@ class FightsController extends AppController {
 		}
 		$this->Fight->id = $id;
 		if($this->Fight->field('loser_id') != $this->user_id){
-		  $this->Session->setFlash('Você não perdeu esse duelo, seu bobão! =D');
-		  $this->redirect(array('controller' => 'members', 'action' => 'dashboard');
+		  $this->Session->setFlash('Você não perdeu esse duelo!');
+		  $this->redirect(array('controller' => 'members', 'action' => 'dashboard'));
 		}
 
-		if ($this->Fight->delete($id)) {
+		  $this->Fight->read(null,$id);
+		  $this->loadModel('Ranking');
+      $this->Ranking->processResult($this->Fight->data);
+		  $this->Fight->delete($id);
 			$this->Session->setFlash('Duelo confirmado.');
-			$this->redirect(array('controller' => 'members', 'action' => 'dashboard');
+			$this->redirect(array('controller' => 'members', 'action' => 'dashboard'));
 		}
-		$this->Session->setFlash(__('Fight was not deleted', true));
-		$this->redirect(array('action' => 'index'));
+
+
 	}
 }
 ?>
