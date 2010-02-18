@@ -8,6 +8,11 @@ class Fight extends AppModel {
             'className'    => 'Member',
             'foreignKey'    => 'loser_id',
             'fields' => array('user_id', 'username')
+        ),
+        'Winner' => array(
+            'className'    => 'Member',
+            'foreignKey'    => 'winner_id',
+            'fields' => array('user_id', 'username')
         )
     );
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

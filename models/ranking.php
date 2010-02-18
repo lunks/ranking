@@ -3,6 +3,7 @@ class Ranking extends AppModel {
 	var $name = 'Ranking';
 	var $useTable = 'ranking';
 	var $displayField = 'member_id';
+	var $belongsTo = 'Member';
 	var $winnerPoints = '3';
 	var $drawPoints = '2';
 	var $loserPoints = '1';

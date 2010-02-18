@@ -34,7 +34,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 2);
+	Configure::write('debug', 0);
 
 /**
  * CakePHP Log Level:
@@ -85,7 +85,7 @@
 /**
  * Uncomment the define below to use CakePHP prefix routes.
  *
- * Set to an array of prefixes you want to use in your application. Use for 
+ * Set to an array of prefixes you want to use in your application. Use for
  * admin or other prefixed routes.
  *
  * 	Routing.prefixes = array('admin', 'manager');
