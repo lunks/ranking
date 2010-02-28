@@ -1,5 +1,6 @@
 <?php
 /**
+ * OK
  * Short description for file.
  *
  * This file is application-wide controller file. You can put all
