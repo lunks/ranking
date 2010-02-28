@@ -2,8 +2,8 @@
 class MembersController extends AppController {
 
 	var $name = 'Members';
-	var $components = array('PhpBB3');
-	var $helpers = array();
+	var $components = array('Session','PhpBB3');
+	var $helpers = array('Html', 'Form');
 	var $useModel = false;
 	function beforeFilter(){
 	  parent::beforeFilter();

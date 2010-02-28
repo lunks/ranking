@@ -2,8 +2,8 @@
 class FightsController extends AppController {
 
 	var $name = 'Fights';
+	var $components = array('Session', 'PhpBB3');
 	var $helpers = array('Html', 'Form');
-  var $components = array();
 
 
   function beforeFilter(){
@@ -19,8 +19,8 @@ class FightsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Fight->create();
 			if ($this->Fight->save($this->data)) {
-				$this->Session->setFlash('Duelo processado, aguardando confirmação do perdedor.');
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('Duelo processado, aguardando confirmação.');
+				$this->redirect(array('/'));
 			} else {
 				$this->Session->setFlash(__('The fight could not be saved. Please, try again.', true));
 			}
@@ -46,7 +46,7 @@ class FightsController extends AppController {
       $this->Ranking->processResult($this->Fight->data);
 		  $this->Fight->delete($id);
 			$this->Session->setFlash('Duelo confirmado.');
-			$this->redirect(array('controller' => '/'));
+			$this->redirect('/');
 	}
 }
 ?>

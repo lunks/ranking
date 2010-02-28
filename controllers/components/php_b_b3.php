@@ -229,5 +229,12 @@ class PhpBB3Component extends Object {
 		$this->user->session_begin();
 	}
 
+	public function footer()
+	{
+
+	  $output = page_footer();
+	  return $output;
+	}
+
 }
 ?>

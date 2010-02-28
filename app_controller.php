@@ -32,7 +32,7 @@
  */
 class AppController extends Controller {
 
-var $components = array('PhpBB3');
+var $components = array('Session', 'PhpBB3');
   var $username;
   var $user_id;
   var $group_id;
@@ -45,6 +45,7 @@ function beforeFilter(){
   $this->set('username', $this->username);
   $this->group_id = $this->PhpBB3->user->data['group_id'];
   $this->set('group_id', $this->group_id);
+  //$this->set('footer', $this->PhpBB3->footer());
   if($group_id == 5)
     $admin = true;
 }
