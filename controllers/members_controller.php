@@ -20,5 +20,11 @@ class MembersController extends AppController {
     $losses = $this->Member->Losses->find('all', array('conditions' => array('loser_id' => $this->user_id)));
     $this->set('losses', $losses);
   }
+
+  function admin(){
+  if($this->admin != true) $this->redirect('/');
+  $fights = $this->Member->Wins->find('all');
+  $this->set('fights', $fights);
+  }
 }
 ?>

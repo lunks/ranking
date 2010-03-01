@@ -1,23 +1,17 @@
-<div class="fights form">
+<h2>Registrar Duelo</h2>
+<div class="fights form panel">
+<div class="block-header"><span><span></span></span></div><div class="block-content"><div class="block-inner">
 <?php echo $this->Form->create('Fight');?>
 	<fieldset>
- 		<legend><?php printf(__('Add %s', true), __('Fight', true)); ?></legend>
 	<?php
 	    echo $this->Form->hidden('winner_id', array('default' => $user_id));
-	    echo $username;
-	    echo " VS ";
-		echo $this->Form->input('loser_id', array('label' => 'Challenger'));
-		echo $this->Form->input('winner_points', array('label' => 'Pontos Vencedor'));
-		echo $this->Form->input('loser_points', array('label' => 'Pontos Perdedor'));
+		echo $this->Form->input('loser_id', array('label' => 'Adversário:', 'before' => '<dl><dt>','between' => '</dt><dt>'));
+		echo $this->Form->input('winner_points', array('label' => 'Quantos pontos você fez?', 'before' => '<dl><dt>','between' => '</dt><dt>', 'class' => 'inputbox'));
+		echo $this->Form->input('loser_points', array('label' => 'Quantos pontos o seu adversário fez?', 'before' => '<dl><dt>','between' => '</dt><dt>', 'class' => 'inputbox'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<ul>
-		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Fights', true)), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Members', true)), array('controller' => 'members', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(sprintf(__('New %s', true), __('Member', true)), array('controller' => 'members', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+
+<?php if ($admin): ?>
+<?php endif;?>
 

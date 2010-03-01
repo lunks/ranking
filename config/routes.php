@@ -35,4 +35,6 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/novo', array('controller' => 'fights', 'action' => 'add'));
 	Router::connect('/duelo/confirma/*', array('controller' => 'fights', 'action' => 'confirm'));
+	Router::connect('/duelo/delete/*', array('controller' => 'fights', 'action' => 'delete'));
+	Router::connect('/admin', array('controller' => 'members', 'action' => 'admin'));
 ?>

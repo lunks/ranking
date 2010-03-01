@@ -48,5 +48,10 @@ class FightsController extends AppController {
 			$this->Session->setFlash('Duelo confirmado.');
 			$this->redirect('/');
 	}
+	function delete($id = null) {
+	  if($this->admin != true) $this->redirect('/');
+	  $this->Fight->hardDelete($id);
+	  $this->redirect($this->referer());
+	}
 }
 ?>

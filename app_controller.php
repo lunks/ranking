@@ -33,22 +33,31 @@
  */
 class AppController extends Controller {
 
-var $components = array('Session', 'PhpBB3');
+  var $components = array('Session', 'PhpBB3');
   var $username;
   var $user_id;
   var $group_id;
   var $admin;
 
 function beforeFilter(){
+
   $this->user_id = $this->PhpBB3->user->data['user_id'];
   $this->set('user_id', $this->user_id);
   $this->username = $this->PhpBB3->user->data['username'];
   $this->set('username', $this->username);
   $this->group_id = $this->PhpBB3->user->data['group_id'];
   $this->set('group_id', $this->group_id);
-  //$this->set('footer', $this->PhpBB3->footer());
-  if($group_id == 5)
-    $admin = true;
+  $this->loadModel('Member');
+  $this->Member->read(null, $this->user_id);
+  //$admin = Set::extract('/Group/group_id', $this->Member->data);
+  if($this->Member->data['Group'][0]['group_id'] == 5) {
+    $this->admin = true;
+    $this->set('admin', $this->admin);
+    }
+
+}
+function check_admin(){
+  if ($this->admin != true) $this->redirect('/');
 }
 
 }

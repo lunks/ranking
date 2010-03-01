@@ -31,7 +31,7 @@
 
 	<!-- header start -->
 
-	<a href="./index.php" id="logolink"><span>BrNavies</span><img src="http://www.brnavies.com.br/forum/styles/ca_black/imageset/brnavies.gif" width="200" height="173" alt="" title="" /></a>
+	<a href="http://www.brnavies.com.br/forum/index.php" id="logolink"><span>BrNavies</span><img src="http://www.brnavies.com.br/forum/styles/ca_black/imageset/brnavies.gif" width="200" height="173" alt="" title="" /></a>
 
 
         <div class="header-clear"></div>
@@ -42,15 +42,15 @@
     <div id="content" style="width: 100%; margin: 0 auto;">
         <div class="topnav">
                     <span>
-                <a href="./ucp.php" title="User Control Panel" accesskey="u">User Control Panel</a>
+                <a href="http://www.brnavies.com.br/forum/ucp.php" title="User Control Panel" accesskey="u">User Control Panel</a>
                 &nbsp;&bull;&nbsp;
             </span>
 
-            <a href="./faq.php" title="Frequently Asked Questions">FAQ</a>
+            <a href="http://www.brnavies.com.br/forum/faq.php" title="Frequently Asked Questions">FAQ</a>
         </span>
                     <span>
                 &nbsp;&bull;&nbsp;
-                <a href="./memberlist.php" title="View complete list of members">Members</a>
+                <a href="http://www.brnavies.com.br/forum/memberlist.php" title="View complete list of members">Members</a>
             </span>
                 </div>
 
@@ -58,7 +58,7 @@
 
 		<div class="navbar navbar-top">
 			<ul class="linklist navlinks">
-				<li class="icon-home"><a href="./index.php" accesskey="h">Board index</a> </li>
+				<li class="icon-home"><a href="http://www.brnavies.com.br/forum/index.php" accesskey="h">Board index</a> </li>
 
 							</ul>
 		</div>
@@ -73,9 +73,13 @@
 
 	<div id="cp-menu">
 		<div class="cp-mini" id="navigation">
-        <div class="block-header"><span><span></span></span></div><div class="block-content"><div class="block-inner">        <ul>
-                            <li class="inactive-section"><div><?php echo $this->Html->link('Ranking', '/'); ?></div></li>
-                            <li class="inactive-section"><div><?php echo $this->Html->link('Registrar duelo', '/novo'); ?></div></li>
+        <div class="block-header"><span><span></span></span></div><div class="block-content"><div class="block-inner">
+        <ul>
+          <li class="inactive-section"><div><?php echo $this->Html->link('Ranking', '/'); ?></div></li>
+          <li class="inactive-section"><div><?php echo $this->Html->link('Registrar duelo', '/novo'); ?></div></li>
+          <?php if ($admin): ?>
+              <li class="inactive-section"><div><?php echo $this->Html->link('Administrar', '/admin'); ?></div></li>
+          <?php endif; ?>
 
                     </ul>
         <div class="block-clear"></div></div></div><div class="block-footer"><span><span></span></span></div>		</div>
@@ -102,8 +106,8 @@
             <div class="navbar">
 
                 <ul class="linklist navlinks">
-                    <li class="leftside"><a href="./index.php" accesskey="h">Board index</a></li>
-                                            <li class="rightside"><a href="./memberlist.php?mode=leaders">The team</a> | <a href="./ucp.php?mode=delete_cookies">Delete all board cookies</a> | <span class="timezone">All times are UTC - 3 hours [ <abbr title="Daylight Saving Time">DST</abbr> ]</span></li>
+                    <li class="leftside"><a href="http://www.brnavies.com.br/forum/index.php" accesskey="h">Board index</a></li>
+                                            <li class="rightside"><a href="http://www.brnavies.com.br/forum/memberlist.php?mode=leaders">The team</a> | <a href="http://www.brnavies.com.br/forum/ucp.php?mode=delete_cookies">Delete all board cookies</a> | <span class="timezone">All times are UTC - 3 hours [ <abbr title="Daylight Saving Time">DST</abbr> ]</span></li>
                 </ul>
 
             </div>
